@@ -23,10 +23,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
@@ -36,7 +33,38 @@
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./src/assets/js/jquery.js",
+              "./src/assets/js/jquery-ui-1.10.4.min.js",
+              "./src/assets/js/jquery-1.8.3.min.js",
+              "./src/assets/js/jquery-ui-1.9.2.custom.min.js",
+              "./src/assets/js/bootstrap.min.js",
+              "./src/assets/js/jquery.scrollTo.min.js",
+              "./src/assets/js/jquery.nicescroll.js",
+              "./src/assets/assets/jquery-knob/./src/assets/js/jquery.knob.js",
+              "./src/assets/js/jquery.sparkline.js",
+              "./src/assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js",
+              "./src/assets/js/owl.carousel.js",
+              "./src/assets/js/fullcalendar.min.js",
+              "./src/assets/assets/fullcalendar/fullcalendar/fullcalendar.js",
+              "./src/assets/js/calendar-custom.js",
+              "./src/assets/js/jquery.rateit.min.js",
+              "./src/assets/js/jquery.customSelect.min.js",
+              "./src/assets/assets/chart-master/Chart.js",
+              "./src/assets/js/scripts.js",
+              "./src/assets/js/sparkline-chart.js",
+              "./src/assets/js/easy-pie-chart.js",
+              "./src/assets/js/jquery-jvectormap-1.2.2.min.js",
+              "./src/assets/js/jquery-jvectormap-world-mill-en.js",
+              "./src/assets/js/xcharts.min.js",
+              "./src/assets/js/jquery.autosize.min.js",
+              "./src/assets/js/jquery.placeholder.min.js",
+              "./src/assets/js/gdp-data.js",
+              "./src/assets/js/morris.min.js",
+              "./src/assets/js/sparklines.js",
+              "./src/assets/js/charts.js",
+              "./src/assets/js/jquery.slimscroll.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -92,13 +120,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         },
@@ -110,9 +133,7 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {

@@ -1,0 +1,15 @@
+@import "../../../../assets/css/bootstrap.min.css";
+@import "../../../../assets/css/bootstrap-theme.css";
+@import "../../../../assets/css/elegant-icons-style.css";
+@import "../../../../assets/css/font-awesome.css";
+@import "../../../../assets/css/style.css";
+@import "../../../../assets/css/style-responsive.css";
+.fondo-chido{
+  background: url('../../../../assets/img/sky.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  padding-top: 50px;
+}
