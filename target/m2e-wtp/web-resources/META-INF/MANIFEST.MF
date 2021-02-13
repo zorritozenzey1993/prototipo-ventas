@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: david
+Build-Jdk: 15.0.1
+Implementation-Title: AngularJS Spring Tutorial
+Implementation-Version: 1.1.0-SNAPSHOT
+Implementation-Vendor-Id: at.porscheinformatik.tutorial
+Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: at.porscheinformatik.tutorial.todo.TodoApplication
+Created-By: Maven Integration for Eclipse
+

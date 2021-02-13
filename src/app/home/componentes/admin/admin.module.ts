@@ -5,12 +5,15 @@ import { VentasComponent } from './ventas/ventas.component';
 import { AgregarComponent } from './agregar/agregar.component';
 import { RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AgregarComponent, VentasComponent, AdminComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
     /*RouterModule.forChild([
       {
         path: '',

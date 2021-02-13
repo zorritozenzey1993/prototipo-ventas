@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule)
   },
   {
     path: '',
@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'registro',
-    component: RegistroComponent
+    loadChildren: () => import('./login/componentes/registro/registro.module').then((m) => m.RegistroModule)
   }
 ];
 

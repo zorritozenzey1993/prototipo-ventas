@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     ) {
     if(sessionStorage.getItem('id') !== null){
       console.log(sessionStorage.getItem('id'));
-      this.enrutador.navigate(['/home'])
+      this.enrutador.navigate(['/','home'])
 
     }
     this.formulario=this.form.group({
@@ -31,11 +31,13 @@ export class LoginComponent implements OnInit {
   }
   public login(val: any): void{
     console.log(val);
-    let res=this.loginService.login(val.correo,val.password);
-    if(res.accesso){
-      sessionStorage.setItem('id',val.correo);
-      sessionStorage.setItem('rol',res.rol);
-      this.enrutador.navigate(['/home'],{queryParams:{usuario: val.correo}})
-    }
+    this.loginService.login(val.correo,val.password).subscribe(res => {
+      if(res.accesso){
+        sessionStorage.setItem('id',val.correo);
+        sessionStorage.setItem('rol',res.rol);
+        this.enrutador.navigate(['/','home'],{queryParams:{usuario: val.correo}})
+      }
+    });
+
   }
 }

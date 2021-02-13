@@ -1,0 +1,18 @@
+{
+  "/micro-usuario": {
+    "target": "http://localhost:9000",
+    "secure": false,
+    "changeOrigin": true,
+    " pathRewrite ": {
+      "^/micro-usuario":""
+    }
+  },
+  "/micro-productos":{
+    "target": "http://localhost:9001",
+    "secure": false,
+    "changeOrigin": true,
+    " pathRewrite ": {
+      "^/micro-productos":""
+    }
+  }
+}

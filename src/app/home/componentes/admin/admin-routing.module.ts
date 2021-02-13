@@ -11,11 +11,11 @@ const routes: Routes = [
       children: [
         {
           path: 'agregar',
-          component: VentasComponent,
+          component: AgregarComponent,
         },
         {
           path: 'ventas',
-          component: AgregarComponent,
+          component: VentasComponent,
         },
       ],
   }

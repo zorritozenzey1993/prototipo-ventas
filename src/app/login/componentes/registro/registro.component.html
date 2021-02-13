@@ -59,51 +59,59 @@
 <div class="fondo-chido">
   <div align="center">
     <div style="background-color:rgba(213, 215, 222, 0.5); width: 700px;">
-      <form >
+      <form [formGroup]="formulario" (ngSubmit)="registrar(formulario)" >
         <div class="row" style="padding: 30px;">
           <div class="col-sm-6" >
             <div class="form-group" align="left">
               <label class="control-label" style="color: #00177e;"><b>Nombre</b></label>
-              <input class="form-control" type="text" name="nombre">
+              <input class="form-control" type="text" formControlName="nombre" name="nombre">
             </div>
             <div class="form-group" align="left">
               <label class="control-label" style="color: #00177e;"><b>Apellido Paterno</b></label>
-              <input class="form-control" type="text" name="apPat">
+              <input class="form-control" type="text" formControlName="apPat" name="apPat">
             </div>
             <div class="form-group" align="left">
               <label class="control-label" style="color: #00177e;"><b>Apellido Materno</b></label>
-              <input class="form-control" type="text" name="apMat">
+              <input class="form-control" type="text" formControlName="apMat" name="apMat">
             </div>
             <div class="form-group" align="left">
               <label class="control-label" style="color: #00177e;"><b>Correo</b></label>
-              <input class="form-control" type="text" name="Correo">
+              <input class="form-control" type="email" formControlName="correo" name="correo">
             </div>
             <div class="form-group" align="left">
               <label class="control-label" style="color: #00177e;"><b>Contraseña</b></label>
-              <input class="form-control" type="text" name="password">
+              <input class="form-control" type="password" formControlName="password" name="password">
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group" align="left">
               <label class="control-label" style="color: #00177e;"><b>Calle</b></label>
-              <input class="form-control" type="text" name="calle">
+              <input class="form-control" type="text" formControlName="calle" name="calle">
             </div>
             <div class="form-group" align="left">
               <label class="control-label" style="color: #00177e;"><b>Colonia</b></label>
-              <input class="form-control" type="text" name="colonia">
+              <input class="form-control" type="text" formControlName="colonia" name="colonia">
             </div>
             <div class="form-group" align="left">
               <label class="control-label" style="color: #00177e;"><b>Número</b></label>
-              <input class="form-control" type="text" name="numero">
+              <input class="form-control" type="text" formControlName="numero" name="numero">
             </div>
             <div class="form-group" align="left">
               <label class="control-label" style="color: #00177e;"><b>Teléfono</b></label>
-              <input class="form-control" type="text" name="telefono">
+              <input class="form-control" type="text" formControlName="telefono" name="telefono">
             </div>
-            <div class="form-group" >
+            <!-- <div class="form-group" >
               <br>
               <button class="btn btn-primary" style="width: 200px;">Registrar</button>
-            </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="row" align="center">
+          <div class="col-sm-6" align="center">
+            <button type="button" class="btn btn-secondary" style="width: 200px;" (click)="regresar($event)">Regresar</button>
+          </div>
+          <div class="col-sm-6" align="center">
+            <button type="submit" class="btn btn-primary" style="width: 200px;" [disabled]="!formulario.valid">Registrar</button>
           </div>
         </div>
         <br>
