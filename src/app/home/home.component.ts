@@ -39,6 +39,8 @@ export class HomeComponent implements OnInit {
           this.permisos=[{nombre: 'Buscar productos',icono: 'icon_search',ruta: '/home/cliente/buscar'}];
           break;
       }
+    }else{
+      this.enrutador.navigate(['/','login']);
     }
   }
   ocultarMenu(e: any): void{

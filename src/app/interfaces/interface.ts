@@ -23,3 +23,4 @@ export interface ProductoRequest{
       stock: string;
       descripcion: string;
 }
+

@@ -9,8 +9,8 @@
         <i class="icon_menu" (click)="ocultarMenu($event)"></i>
       </div>
     </div>
-    <a href="/home" class="logo">Ventas</a>
-    <!-- <div class="nav search-row" id="top_menu">
+    <a routerLink="/home" routerLinkActive="active" class="logo">Ventas</a>
+    <!-- <div class="nav search-row" id="top_menu">´
       <ul class="nav top-menu">
         <li>
           <form class="navbar-form">
@@ -299,7 +299,7 @@
     <div id="sidebar" class="nav-collapse">
       <ul class="sidebar-menu">
         <li *ngFor="let p of permisos">
-          <a class="" href="{{p.ruta}}">
+          <a class="" routerLink="{{p.ruta}}" routerLinkActive="active">
             <i class="{{p.icono}}"></i>
             <span>{{p.nombre}}</span>
           </a>

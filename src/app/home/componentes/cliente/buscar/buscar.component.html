@@ -1,1 +1,29 @@
-<p>buscar works!</p>
+<form [formGroup]="formulario" (ngSubmit)="buscar(formulario)">
+  <div class="form-group">
+    <label for="cadena">Buscar: </label>
+    <input class="form-control" name="cadena" formControlName="cadena" type="text">
+  </div>
+  <div>
+    <button class="btn btn-primary" type="submit" [disabled]="!formulario.valid">Buscar</button>
+  </div>
+</form>
+<div *ngIf="productos.length > 0">
+  <table class="table">
+    <thead>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of productos; let i = index">
+        <td>{{i}}</td>
+        <td>{{p.nombre}}</td>
+        <td>{{p.descripcion}}</td>
+        <td>${{p.precio}}</td>
+        <td><button class="btn btn-primary" type="button" (click)="agregarCarrito(p.id)">Agregar al carrito</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
