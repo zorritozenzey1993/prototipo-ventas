@@ -1,6 +1,7 @@
 import { ProductoService } from './../../../../servicios/producto.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buscar',
@@ -12,7 +13,8 @@ export class BuscarComponent implements OnInit {
   productos: any[] = [];
   constructor(
     private form: FormBuilder,
-    private productosService: ProductoService
+    private productosService: ProductoService,
+    private enrutador: Router
     ) {
     this.formulario= this.form.group({
       cadena: [null, Validators.required]
@@ -20,6 +22,7 @@ export class BuscarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    sessionStorage.setItem('carrito',JSON.stringify([]));
   }
   public buscar(f: FormGroup){
     console.log("Productos");
@@ -34,7 +37,19 @@ export class BuscarComponent implements OnInit {
       ];
     //});
   }
-  agregarCarrito(id: number): void{
-    console.log(id);
+  agregarCarrito(producto: any, cantidad: any): void{
+    let elemento='';
+    elemento+=sessionStorage.getItem('carrito') === null?'[]':sessionStorage.getItem('carrito')
+    //const carrito='';
+    const carrito = JSON.parse(elemento);
+    producto.cantidad=cantidad;
+    carrito.push(producto);
+    sessionStorage.setItem('carrito',JSON.stringify(carrito));
+  }
+  public comprar(producto: any, cantidad: any): void{
+    console.log(producto,cantidad);
+  }
+  verCarrito(){
+    this.enrutador.navigate(['/','home','cliente','carrito']);
   }
 }

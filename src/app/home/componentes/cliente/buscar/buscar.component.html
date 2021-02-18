@@ -1,3 +1,8 @@
+<div>
+  <button class="btn1" (click)="verCarrito()">
+    <i class="icon_cart_alt"></i>
+  </button>
+</div>
 <form [formGroup]="formulario" (ngSubmit)="buscar(formulario)">
   <div class="form-group">
     <label for="cadena">Buscar: </label>
@@ -14,6 +19,8 @@
       <th>Nombre</th>
       <th>Descripción</th>
       <th>Precio</th>
+      <th>Catidad a comprar</th>
+      <th></th>
       <th></th>
     </thead>
     <tbody>
@@ -22,7 +29,9 @@
         <td>{{p.nombre}}</td>
         <td>{{p.descripcion}}</td>
         <td>${{p.precio}}</td>
-        <td><button class="btn btn-primary" type="button" (click)="agregarCarrito(p.id)">Agregar al carrito</button></td>
+        <td><input type="number" #cantidad></td>
+        <td><button class="btn btn-secondary" type="button" (click)="comprar(p,cantidad.value)">Comprar</button></td>
+        <td><button class="btn btn-primary" type="button" (click)="agregarCarrito(p,cantidad.value)">Agregar al carrito</button></td>
       </tr>
     </tbody>
   </table>
