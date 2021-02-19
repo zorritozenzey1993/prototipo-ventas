@@ -1,6 +1,10 @@
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AgregarComponent } from './componentes/agregar/agregar.component';
+import { BuscarComponent } from './componentes/buscar/buscar.component';
+import { CarritoComponent } from './componentes/carrito/carrito.component';
+import { VentasComponent } from './componentes/ventas/ventas.component';
 
 export const routes: Routes = [
   {
@@ -8,12 +12,20 @@ export const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: 'admin',
-        loadChildren: () => import('./componentes/admin/admin.module').then(m => m.AdminModule)
+        path: 'agregar',
+        component: AgregarComponent
       },
       {
-        path: 'cliente',
-        loadChildren: () => import('./componentes/cliente/cliente.module').then(m => m.ClienteModule)
+        path: 'buscar',
+        component: BuscarComponent
+      },
+      {
+        path: 'carrito',
+        component: CarritoComponent
+      },
+      {
+        path: 'ventas',
+        component: VentasComponent
       }
     ]
   }

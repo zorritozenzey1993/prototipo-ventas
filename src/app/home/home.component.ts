@@ -33,10 +33,10 @@ export class HomeComponent implements OnInit {
     if(this.rol !== null){
       switch(this.rol){
         case 'ADMIN':
-          this.permisos=[{nombre: 'Agregar productos', icono: 'icon_pencil-edit',ruta: '/home/admin/agregar'},{nombre: 'Ver ventas',icono: 'icon_currency',ruta: '/home/admin/ventas'}];
+          this.permisos=[{nombre: 'Agregar productos', icono: 'icon_pencil-edit',ruta: '/home/agregar'},{nombre: 'Comprar',icono: 'icon_currency',ruta: '/home/buscar'}];
           break;
         case 'CLIENTE':
-          this.permisos=[{nombre: 'Buscar productos',icono: 'icon_search',ruta: '/home/cliente/buscar'}];
+          this.permisos=[{nombre: 'Comprar',icono: 'icon_search',ruta: '/home/buscar'}];
           break;
       }
     }else{
