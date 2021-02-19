@@ -15,7 +15,7 @@ import { BrowserModule } from '@angular/platform-browser';
   declarations: [HomeComponent,BuscarComponent,AgregarComponent],
   imports: [
     CommonModule,
-    BrowserModule,
+    //BrowserModule,
     //RouterModule.forChild(routes),
     HomeRoutingModule,
     FormsModule,
