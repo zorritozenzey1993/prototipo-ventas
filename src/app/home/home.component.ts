@@ -31,11 +31,11 @@ export class HomeComponent implements OnInit {
     this.usuario=sessionStorage.getItem('id');
     this.rol=sessionStorage.getItem('rol');
     if(this.rol !== null){
-      switch(this.rol){
-        case 'ADMIN':
+      switch(+this.rol){
+        case 1:
           this.permisos=[{nombre: 'Agregar productos', icono: 'icon_pencil-edit',ruta: '/home/agregar'},{nombre: 'Comprar',icono: 'icon_currency',ruta: '/home/buscar'}];
           break;
-        case 'CLIENTE':
+        case 2:
           this.permisos=[{nombre: 'Comprar',icono: 'icon_search',ruta: '/home/buscar'}];
           break;
       }

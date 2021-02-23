@@ -8,10 +8,13 @@ import { ProductoRequest } from '../interfaces/interface';
 })
 export class ProductoService {
   constructor(private http: HttpClient) { }
-  public registrar(p: ProductoRequest): void{
-
+  public registrar(p: any): Observable<any>{
+    return this.http.post<any>('/micro-productos/productos/registro',p);
   }
   public buscar(cad: string): Observable<any>{
-    return new Observable<null>();
+    return this.http.post<any>('/micro-productos/productos/buscar',{cadena:cad});
+  }
+  public categorias(): Observable<any>{
+    return this.http.get<any>('/micro-productos/productos/categorias');
   }
 }

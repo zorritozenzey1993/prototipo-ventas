@@ -19,11 +19,11 @@ export class LoginService {
     sessionStorage.clear();
     console.log(sessionStorage.getItem('id'),sessionStorage.getItem('rol'));
   }
-  public registro(datos: FormularioRegistro): void{
-    /*sessionStorage.removeItem('id');
-    sessionStorage.removeItem('rol');
-    sessionStorage.clear();
-    console.log(sessionStorage.getItem('id'),sessionStorage.getItem('rol'));*/
+  public registro(datos: FormularioRegistro): Observable<any>{
+    return this.http.post<any>('/micro-usuario/usuario/registro',datos);
+  }
+  public getRoles(): Observable<any>{
+    return this.http.get<any>('/micro-usuario/usuario/roles');
   }
 }
 
