@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 export class LoginService {
 
   constructor(private http: HttpClient) { }
-  public login(usu: string, pass: string): Observable<LoginResponse>{
-    return this.http.post<LoginResponse>('/micro-usuario/usuario/login',{correo: usu, password: pass});
+  public login(usu: string, pass: string): Observable<any>{
+    return this.http.post<any>('/micro-usuario/usuario/login',{correo: usu, password: pass});
     /*let resultado: LoginResponse={accesso: true,rol: 'ADMIN'};
     return resultado;*/
   }

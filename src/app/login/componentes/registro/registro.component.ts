@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { finalize } from 'rxjs/operators';
 import { AlertsService } from 'angular-alert-module';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -18,7 +19,7 @@ export class RegistroComponent implements OnInit {
     private usuarioService: LoginService,
     private form: FormBuilder,
     private spinner: NgxSpinnerService,
-    private alerta: AlertsService
+    private alerta: MessageService
   ) {
     this.formulario = this.form.group({
       nombre: [null, Validators.required],
@@ -64,7 +65,7 @@ export class RegistroComponent implements OnInit {
       })
       ).subscribe(
         res=> {
-          this.alerta.setMessage(res.mensaje,'success');
+          this.alerta.add({detail:res.mensaje,severity:'success'});
           this.enrutador.navigate(['/','login']);
         },
         err =>{

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AlertsService } from 'angular-alert-module';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-agregar',
@@ -19,7 +20,11 @@ export class AgregarComponent implements OnInit {
     {id: 4, descripcion: 'Cat4'},
     {id: 5, descripcion: 'Cat5'}*/
   ];
-  constructor(private form: FormBuilder, private productoService: ProductoService, private spinner: NgxSpinnerService, private alerta: AlertsService) {
+  constructor(
+    private form: FormBuilder,
+    private productoService: ProductoService,
+    private spinner: NgxSpinnerService,
+    private alerta: MessageService) {
     this.formulario = this.form.group({
       categoria: [null, Validators.required],
       nombre: [null, Validators.required],
@@ -27,7 +32,7 @@ export class AgregarComponent implements OnInit {
       cantidad: [null, Validators.required],
       precioUnitario: [null, Validators.required],
       precio: [null, Validators.required],
-      stock: [null, Validators.required],
+      //stock: [null, Validators.required],
       descripcion: [null, Validators.required],
     });
     //this.alerta.setConfig();
@@ -71,12 +76,12 @@ export class AgregarComponent implements OnInit {
       )
     ).subscribe(
       res=> {
-        this.alerta.setMessage(res.mensaje,'success');
+        this.alerta.add({detail:res.mensaje,severity:'success'});
         this.formulario.reset();
       },
       err =>{
         console.log(err);
-        this.alerta.setMessage(err.mensaje,'error');
+        this.alerta.add({detail:err.error.mensaje,severity:'error'});
       }
     );
   }

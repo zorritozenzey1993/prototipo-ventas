@@ -17,4 +17,10 @@ export class ProductoService {
   public categorias(): Observable<any>{
     return this.http.get<any>('/micro-productos/productos/categorias');
   }
+  public comprar(p: any): Observable<any>{
+    return this.http.post<any>('/micro-productos/productos/comprar',p);
+  }
+  public comprarVarios(productos: any[]): Observable<any>{
+    return this.http.post<any>('/micro-productos/productos/comprarVarios',{'lista':productos});
+  }
 }

@@ -1,6 +1,7 @@
 <h5>Comprar Producto</h5>
 <form [formGroup]="formulario" (ngSubmit)="comprar(formulario)">
   <div class="row">
+    <input formControlName="id" type="hidden"  [(ngModel)]="producto.id">
   <div class="form-group col-sm-12">
     <label>Nombre del producto: </label><input class="form-control" formControlName="nombre" type="text"  [(ngModel)]="producto.nombre" readonly>
   </div>
@@ -31,6 +32,6 @@
 
 </div>
 <div align="right">
-  <button class="btn btn-primary" type="submit">Comprar</button>
+  <button class="btn btn-primary" type="submit" [disabled]="!formulario.valid">Comprar</button>
 </div>
 </form>

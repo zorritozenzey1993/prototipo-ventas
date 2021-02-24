@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AlertsService } from 'angular-alert-module';
 import { ProtractorExpectedConditions } from 'protractor';
+import { MessageService } from 'primeng/api';
+import { isNumeric } from 'jquery';
 
 @Component({
   selector: 'app-buscar',
@@ -20,28 +22,28 @@ export class BuscarComponent implements OnInit {
     private productosService: ProductoService,
     private enrutador: Router,
     private spinner: NgxSpinnerService,
-    private alerta: AlertsService
-    ) {
-    this.formulario= this.form.group({
+    private alerta: MessageService
+  ) {
+    this.formulario = this.form.group({
       cadena: [null, Validators.required]
     });
   }
 
   ngOnInit(): void {
-    sessionStorage.setItem('carrito',JSON.stringify([]));
+    sessionStorage.setItem('carrito', JSON.stringify([]));
   }
-  public buscar(f: FormGroup){
-    this.productos=[];
-    console.log("Producto a buscar: "+f.value.cadena);
+  public buscar(f: FormGroup) {
+    this.productos = [];
+    console.log("Producto a buscar: " + f.value.cadena);
     this.spinner.show();
     this.productosService.buscar(f.value.cadena).pipe(
-      finalize(()=>{
+      finalize(() => {
         this.spinner.hide();
       })
     ).subscribe(res => {
       console.log(res);
       res.forEach((p: any) => {
-        this.productos.push({id:p.id, nombre: p.nombre, descripcion: p.descripcion, precio: p.precio});
+        this.productos.push({ id: p.id, nombre: p.nombre, descripcion: p.descripcion, precio: p.precio,stock:p.stock });
       });
       /*this.productos=[
         {id:1, nombre: "Producto 1", descripcion: "Descripcion 1", precio: 100},
@@ -51,23 +53,51 @@ export class BuscarComponent implements OnInit {
         {id:5, nombre: "Producto 5", descripcion: "Descripcion 5", precio: 104}
       ];*/
     },
-    err=>{
-      this.alerta.setMessage(err.mensaje,'error');
-    });
+      err => {
+        this.alerta.add({ detail: err.error.mensaje, severity: 'error' });
+      });
   }
-  agregarCarrito(producto: any, cantidad: any): void{
-    let elemento='';
-    elemento+=sessionStorage.getItem('carrito') === null?'[]':sessionStorage.getItem('carrito')
-    //const carrito='';
-    const carrito = JSON.parse(elemento);
-    producto.cantidad=cantidad;
-    carrito.push(producto);
-    sessionStorage.setItem('carrito',JSON.stringify(carrito));
+  agregarCarrito(producto: any, cantidad: any): void {
+    if (+cantidad > 0) {
+      let elemento = '';
+      try {
+        elemento += sessionStorage.getItem('carrito') === null ? '[]' : sessionStorage.getItem('carrito')
+        let banExiste=false;
+        const carrito = JSON.parse(elemento);
+        carrito.forEach((p:any) => {
+          if(p.id === producto.id){
+            p.cantidad+=cantidad;
+            banExiste=true;
+          }
+        });
+        if(!banExiste){
+          producto.cantidad = cantidad;
+          carrito.push(producto);
+        }
+
+        sessionStorage.setItem('carrito', JSON.stringify(carrito));
+
+        producto.stock--;
+        this.alerta.add({ detail: 'Producto agregado al carrito' ,severity:'success'});
+      }
+      catch (e) {
+        this.alerta.add({ detail: 'Hubo un error al agregar al carrito' ,severity:'error'});
+      }
+    }
   }
-  public comprar(producto: any, cantidad: any): void{
-    this.enrutador.navigate(['/','home','comprar'],{queryParams:{'producto':JSON.stringify(producto),'cantidad':cantidad}});
+  public comprar(producto: any, cantidad: any): void {
+    console.log(cantidad);
+    if (+ cantidad > 0) {
+      this.enrutador.navigate(['/', 'home', 'comprar'], { queryParams: { 'producto': JSON.stringify(producto), 'cantidad': cantidad } });
+    }
+    //this.enrutador.navigate(['/','home','comprar'],{queryParams:{'producto':JSON.stringify(producto),'cantidad':cantidad}});
   }
-  verCarrito(){
-    this.enrutador.navigate(['/','home','carrito']);
+  verCarrito() {
+
+    this.enrutador.navigate(['/', 'home', 'carrito']);
+  }
+  verValor(val: any): boolean {
+    console.log(val);
+    return false;
   }
 }

@@ -2,6 +2,8 @@ import { LoginService } from '../servicios/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertsService } from 'angular-alert-module';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,7 @@ export class LoginComponent implements OnInit {
     private enrutador: Router,
     private form: FormBuilder,
     private loginService: LoginService,
+    private alertas: MessageService
     ) {
     if(sessionStorage.getItem('id') !== null){
       console.log(sessionStorage.getItem('id'));
@@ -33,10 +36,14 @@ export class LoginComponent implements OnInit {
     console.log(val);
     this.loginService.login(val.correo,val.password).subscribe(res => {
       if(res.accesso){
-        sessionStorage.setItem('id',val.correo);
+        sessionStorage.setItem('id',res.id);
+        sessionStorage.setItem('correo',val.correo);
         sessionStorage.setItem('rol',res.rol);
         this.enrutador.navigate(['/','home'],{queryParams:{usuario: val.correo}})
       }
+    },err=>{
+      console.log(err);
+      this.alertas.add({severity: 'error',detail:'Error'});
     });
 
   }

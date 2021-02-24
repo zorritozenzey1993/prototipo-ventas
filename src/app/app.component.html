@@ -1,5 +1,24 @@
 
 <router-outlet></router-outlet>
 
-<ngx-spinner></ngx-spinner>
-<app-alerts></app-alerts>
+
+<!--
+<div class="jumbotron p-4">
+  <div class="container text-center"> -->
+    <div [style]="{'position': 'absolute','z-index': '2','width': '100%'}">
+    <p-messages
+    [showTransitionOptions]="'400ms'"
+    [hideTransitionOptions]="'0ms'"
+    [closable]="true">
+    </p-messages>
+    <!-- <p-messages>
+      <ng-template pTemplate>
+          <img src="../assets/img/avatar1.jpg" width="32" />
+          <div class="p-ml-2">Always bet on Prime.</div>
+      </ng-template>
+  </p-messages> -->
+</div>
+      <router-outlet></router-outlet>
+      <ngx-spinner></ngx-spinner>
+  <!-- </div>
+</div> -->

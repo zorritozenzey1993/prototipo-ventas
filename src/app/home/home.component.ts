@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usuario=sessionStorage.getItem('id');
+    this.usuario=sessionStorage.getItem('correo');
     this.rol=sessionStorage.getItem('rol');
     if(this.rol !== null){
       switch(+this.rol){

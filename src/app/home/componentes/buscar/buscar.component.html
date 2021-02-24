@@ -20,14 +20,14 @@
       <th></th>
     </thead>
     <tbody>
-      <tr *ngFor="let p of productos; let i = index">
+      <tr *ngFor="let p of productos; let i = index" >
         <td>{{i}}</td>
         <td>{{p.nombre}}</td>
         <td>{{p.descripcion}}</td>
         <td>${{p.precio}}</td>
-        <td><input type="number" #cantidad></td>
-        <td><button class="btn btn-secondary" type="button" (click)="comprar(p,cantidad.value)">Comprar</button></td>
-        <td><button class="btn btn-primary" type="button" (click)="agregarCarrito(p,cantidad.value)">Agregar al carrito</button></td>
+        <td><input type="number" #cantidad [max]="p.stock" min="0" [disabled]="p.stock===0"></td>
+        <td><button class="btn btn-secondary" type="button" (click)="comprar(p,cantidad.value)" [disabled]="p.stock===0">Comprar</button></td>
+        <td><button class="btn btn-primary" type="button" (click)="agregarCarrito(p,cantidad.value)" [disabled]="p.stock===0">Agregar al carrito</button></td>
       </tr>
     </tbody>
   </table>
