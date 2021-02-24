@@ -1,4 +1,4 @@
-import { isNumeric } from 'jquery';
+//import { isNumeric } from 'jquery';
 import { finalize } from 'rxjs/operators';
 import { ProductoService } from './../../../servicios/producto.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -74,7 +74,7 @@ export class CarritoComponent implements OnInit {
       res=>{
         console.log(res);
         res.forEach(r=>{
-          if(isNumeric(r) && +r>204){
+          if(typeof +r === "number"  && +r>204){
             errores++;
           }else{
             buenos++;

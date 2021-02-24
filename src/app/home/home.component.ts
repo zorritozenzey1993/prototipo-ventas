@@ -33,15 +33,16 @@ export class HomeComponent implements OnInit {
     if(this.rol !== null){
       switch(+this.rol){
         case 1:
-          this.permisos=[{nombre: 'Agregar productos', icono: 'icon_pencil-edit',ruta: '/home/agregar'},{nombre: 'Comprar',icono: 'icon_currency',ruta: '/home/buscar'}];
+          this.permisos=[{nombre: 'Agregar productos', icono: 'icon_pencil-edit',ruta: '/home/agregar'},{nombre: 'Productos propios',ruta: '/home/buscar',icono: 'icon_tag'},{nombre: 'Mercado Libre',ruta: '/home/mercado-libre',icono: 'icon_tag'},{nombre: 'Amazon',ruta: '/home/amazon',icono: 'icon_search'}];
           break;
         case 2:
-          this.permisos=[{nombre: 'Comprar',icono: 'icon_search',ruta: '/home/buscar'}];
+          this.permisos=[,{nombre: 'Productos propios',ruta: '/home/buscar',icono: 'icon_tag'},{nombre: 'Mercado Libre',ruta: '/home/mercado-libre',icono: 'icon_tag'},{nombre: 'Amazon',ruta: '/home/amazon',icono: 'icon_tag'}];
           break;
       }
     }else{
       this.enrutador.navigate(['/','login']);
     }
+    console.log(this.permisos);
   }
   ocultarMenu(e: any): void{
     //if(this.oculto){
