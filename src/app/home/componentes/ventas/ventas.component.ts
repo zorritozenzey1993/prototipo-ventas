@@ -25,6 +25,7 @@ export class VentasComponent implements OnInit {
       id:null,
       nombre:null,
       descripcion: null,
+      tienda: null,
       precio: null,
       cantidad: null,
       total:null,

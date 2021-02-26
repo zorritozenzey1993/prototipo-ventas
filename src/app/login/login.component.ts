@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('correo',val.correo);
         sessionStorage.setItem('rol',res.rol);
         this.enrutador.navigate(['/','home'])
+      }else{
+        this.alertas.add({severity: 'error',detail:'Acceso no autorizado'});
       }
     },err=>{
       console.log(err);

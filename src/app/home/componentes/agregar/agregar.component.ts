@@ -32,7 +32,7 @@ export class AgregarComponent implements OnInit {
       cantidad: [null, Validators.required],
       precioUnitario: [null, Validators.required],
       precio: [null, Validators.required],
-      //stock: [null, Validators.required],
+      tienda: [null, Validators.required],
       descripcion: [null, Validators.required],
     });
     //this.alerta.setConfig();
@@ -65,7 +65,7 @@ export class AgregarComponent implements OnInit {
       cantidad: f.value.cantidad,
       precioUnitario: +f.value.precioUnitario,
       precio: +f.value.precio,
-      stock: +f.value.stock,
+      tienda: f.value.tienda,
       descripcion: f.value.descripcion
     };
     this.productoService.registrar(datos).pipe(

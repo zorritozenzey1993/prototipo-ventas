@@ -3,6 +3,7 @@
     <th>#</th>
     <th>Nombre</th>
     <th>Descripción</th>
+    <th>Tienda</th>
     <th>Precio</th>
     <th>Catidad a comprar</th>
     <th></th>
@@ -13,6 +14,7 @@
       <td>{{i}}</td>
       <td>{{p.nombre}}</td>
       <td>{{p.descripcion}}</td>
+      <td>{{p.tienda}}</td>
       <td>${{p.precio}}</td>
       <td>{{p.cantidad}}</td>
       <td><button class="btn btn-secondary" type="button" (click)="quitar(p)" [disabled]="realizarPago">Quitar</button></td>

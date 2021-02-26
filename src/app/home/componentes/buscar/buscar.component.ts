@@ -36,14 +36,26 @@ export class BuscarComponent implements OnInit {
     this.productos = [];
     console.log("Producto a buscar: " + f.value.cadena);
     this.spinner.show();
-    this.productosService.buscar(f.value.cadena).pipe(
+    this.productosService.buscar(f.value.cadena,'PROPIA').pipe(
       finalize(() => {
         this.spinner.hide();
       })
     ).subscribe(res => {
       console.log(res);
       res.forEach((p: any) => {
-        this.productos.push({ id: p.id, nombre: p.nombre, descripcion: p.descripcion, precio: p.precio,stock:p.stock });
+        let nom_tienda='';
+        switch(p.tienda){
+          case 'PROPIA':
+            nom_tienda='Propia';
+            break;
+          case 'MERCADO_LIBRE':
+            nom_tienda='Mercado Libre';
+            break;
+          case 'AMAZON':
+            nom_tienda='Amazon';
+            break;
+        }
+        this.productos.push({ id: p.id, nombre: p.nombre, descripcion: p.descripcion, precio: p.precio,stock:p.stock,tienda:nom_tienda});
       });
       /*this.productos=[
         {id:1, nombre: "Producto 1", descripcion: "Descripcion 1", precio: 100},

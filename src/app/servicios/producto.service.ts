@@ -11,8 +11,8 @@ export class ProductoService {
   public registrar(p: any): Observable<any>{
     return this.http.post<any>('/micro-productos/productos/registro',p);
   }
-  public buscar(cad: string): Observable<any>{
-    return this.http.post<any>('/micro-productos/productos/buscar',{cadena:cad});
+  public buscar(cad: string,tienda: string): Observable<any>{
+    return this.http.post<any>('/micro-productos/productos/buscar',{cadena:cad,'tienda':tienda});
   }
   public categorias(): Observable<any>{
     return this.http.get<any>('/micro-productos/productos/categorias');
