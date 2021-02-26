@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('id',res.id);
         sessionStorage.setItem('correo',val.correo);
         sessionStorage.setItem('rol',res.rol);
-        this.enrutador.navigate(['/','home'],{queryParams:{usuario: val.correo}})
+        this.enrutador.navigate(['/','home'])
       }
     },err=>{
       console.log(err);

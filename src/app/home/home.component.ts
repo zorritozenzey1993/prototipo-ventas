@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   oculto: boolean= false;
 
   constructor(
-    private parametrosRuta: ActivatedRoute,
+    //private parametrosRuta: ActivatedRoute,
     private loginService: LoginService,
     private enrutador: Router
     ) {

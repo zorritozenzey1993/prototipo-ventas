@@ -1,3 +1,4 @@
+import { AmazonComponent } from './componentes/amazon/amazon.component';
 import { MercadoLibreComponent } from './componentes/mercado-libre/mercado-libre.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
@@ -16,7 +17,7 @@ import { AlertsModule } from 'angular-alert-module';
 
 
 @NgModule({
-  declarations: [HomeComponent,BuscarComponent,AgregarComponent,CarritoComponent,VentasComponent,MercadoLibreComponent],
+  declarations: [HomeComponent,BuscarComponent,AgregarComponent,CarritoComponent,VentasComponent,MercadoLibreComponent,AmazonComponent],
   imports: [
     CommonModule,
     //RouterModule.forChild(routes),
