@@ -12,19 +12,19 @@ import { BuscarComponent } from './componentes/buscar/buscar.component';
 import { AgregarComponent } from './componentes/agregar/agregar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CarritoComponent } from './componentes/carrito/carrito.component';
-import { VentasComponent } from './componentes/ventas/ventas.component';
 import { AlertsModule } from 'angular-alert-module';
+import { ComprarComponent } from './componentes/comprar/comprar.component';
+import { VentasComponent } from './componentes/ventas/ventas.component';
 
 
 @NgModule({
-  declarations: [HomeComponent,BuscarComponent,AgregarComponent,CarritoComponent,VentasComponent,MercadoLibreComponent,AmazonComponent],
+  declarations: [HomeComponent,BuscarComponent,AgregarComponent,CarritoComponent,ComprarComponent,MercadoLibreComponent,AmazonComponent, VentasComponent],
   imports: [
     CommonModule,
     //RouterModule.forChild(routes),
     HomeRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-
+    ReactiveFormsModule
   ],
   exports: []
 })

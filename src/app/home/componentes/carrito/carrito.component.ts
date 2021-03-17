@@ -63,8 +63,9 @@ export class CarritoComponent implements OnInit {
     let respuestas: Observable<any>[]=[];
     let datos :any[]=[];
     this.spinner.show();
-    let idUsu=sessionStorage.getItem('id') !== null;
-    let usu=+idUsu;
+    let idUsu=sessionStorage.getItem('id');
+    let usu=idUsu===null?'0':+idUsu;
+    console.log('Id del usuario que compra: '+usu);
     this.productos.forEach(p=>{
       respuestas.push(this.productoService.comprar({idUsuario: usu,idInventario:p.id,cantidad:p.cantidad,total: +p.precio * + p.cantidad}));
     });
@@ -84,6 +85,7 @@ export class CarritoComponent implements OnInit {
 
       },()=>{
         this.spinner.hide();
+        console.log('Buenos: '+buenos+', malos: '+errores);
         if(buenos>0 && errores === 0){
           this.alerta.add({detail: 'Todos los productos fueron comprados',severity: 'success'});
           sessionStorage.setItem('carrito',JSON.stringify([]));
@@ -91,10 +93,12 @@ export class CarritoComponent implements OnInit {
           this.alerta.add({detail: 'Ninguno de los productos fue comprado',severity: 'error'});
         }else if(buenos>0 && errores > 0){
           this.alerta.add({detail: buenos+' productos fueron comprados y '+errores+' no',severity: 'warn'});
-          this.enrutador.navigate(['/', 'home', 'buscar']);
         }
-
+        this.enrutador.navigate(['/', 'home', 'buscar']);
       }
     );
+  }
+  public regresar(){
+    this.enrutador.navigate(['/', 'home']);
   }
 }

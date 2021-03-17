@@ -33,10 +33,20 @@ export class HomeComponent implements OnInit {
     if(this.rol !== null){
       switch(+this.rol){
         case 1:
-          this.permisos=[{nombre: 'Agregar productos', icono: 'icon_pencil-edit',ruta: '/home/agregar'},{nombre: 'Productos propios',ruta: '/home/buscar',icono: 'icon_tag'},{nombre: 'Mercado Libre',ruta: '/home/mercado-libre',icono: 'icon_tag'},{nombre: 'Amazon',ruta: '/home/amazon',icono: 'icon_tag'}];
+          this.permisos=[
+            {nombre: 'Agregar productos', icono: 'icon_pencil-edit',ruta: '/home/agregar'},
+            {nombre: 'Productos propios',ruta: '/home/buscar',icono: 'icon_tag'},
+            {nombre: 'Mercado Libre',ruta: '/home/mercado-libre',icono: 'icon_tag'},
+            {nombre: 'Amazon',ruta: '/home/amazon',icono: 'icon_tag'},
+            {nombre: 'Ventas',ruta: '/home/ventas',icono: 'icon_currency'}
+          ];
           break;
         case 2:
-          this.permisos=[{nombre: 'Productos propios',ruta: '/home/buscar',icono: 'icon_tag'},{nombre: 'Mercado Libre',ruta: '/home/mercado-libre',icono: 'icon_tag'},{nombre: 'Amazon',ruta: '/home/amazon',icono: 'icon_tag'}];
+          this.permisos=[
+            {nombre: 'Productos propios',ruta: '/home/buscar',icono: 'icon_tag'},
+            {nombre: 'Mercado Libre',ruta: '/home/mercado-libre',icono: 'icon_tag'},
+            {nombre: 'Amazon',ruta: '/home/amazon',icono: 'icon_tag'}
+          ];
           break;
       }
     }else{

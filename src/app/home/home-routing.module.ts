@@ -1,3 +1,4 @@
+import { VentasComponent } from './componentes/ventas/ventas.component';
 import { MercadoLibreComponent } from './componentes/mercado-libre/mercado-libre.component';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
@@ -5,8 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AgregarComponent } from './componentes/agregar/agregar.component';
 import { BuscarComponent } from './componentes/buscar/buscar.component';
 import { CarritoComponent } from './componentes/carrito/carrito.component';
-import { VentasComponent } from './componentes/ventas/ventas.component';
 import { AmazonComponent } from './componentes/amazon/amazon.component';
+import { ComprarComponent } from './componentes/comprar/comprar.component';
 
 export const routes: Routes = [
   {
@@ -27,7 +28,7 @@ export const routes: Routes = [
       },
       {
         path: 'comprar',
-        component: VentasComponent
+        component: ComprarComponent
       },
       {
         path: 'mercado-libre',
@@ -36,6 +37,10 @@ export const routes: Routes = [
       {
         path: 'amazon',
         component: AmazonComponent
+      },
+      {
+        path: 'ventas',
+        component: VentasComponent
       }
     ]
   }

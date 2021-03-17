@@ -33,18 +33,19 @@ export class LoginComponent implements OnInit {
 
   }
   public login(val: any): void{
-    console.log(val);
+    //console.log(val);
     this.loginService.login(val.correo,val.password).subscribe(res => {
       if(res.accesso){
         sessionStorage.setItem('id',res.id);
         sessionStorage.setItem('correo',val.correo);
         sessionStorage.setItem('rol',res.rol);
-        this.enrutador.navigate(['/','home'])
+        this.enrutador.navigate(['/','home']);
+        console.log('Id del usuario logeado: '+sessionStorage.getItem('id'));
       }else{
         this.alertas.add({severity: 'error',detail:'Acceso no autorizado'});
       }
     },err=>{
-      console.log(err);
+      //console.log(err);
       this.alertas.add({severity: 'error',detail:'Error'});
     });
 

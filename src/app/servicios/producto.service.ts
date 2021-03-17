@@ -23,4 +23,10 @@ export class ProductoService {
   public comprarVarios(productos: any[]): Observable<any>{
     return this.http.post<any>('/micro-productos/productos/comprarVarios',{'lista':productos});
   }
+  public ventas(): Observable<any>{
+    return this.http.get<any>('/micro-productos/productos/ventas');
+  }
+  public ventasPorUsuario(): Observable<any>{
+    return this.http.get<any>('/micro-productos/productos/ventas-usuario');
+  }
 }

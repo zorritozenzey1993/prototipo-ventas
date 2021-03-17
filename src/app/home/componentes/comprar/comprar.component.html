@@ -1,0 +1,40 @@
+<h5>Comprar Producto</h5>
+<form [formGroup]="formulario" (ngSubmit)="comprar(formulario)">
+  <div class="row">
+    <input formControlName="id" type="hidden"  [(ngModel)]="producto.id">
+  <div class="form-group col-sm-12">
+    <label>Nombre del producto: </label><input class="form-control" formControlName="nombre" type="text"  [(ngModel)]="producto.nombre" readonly>
+  </div>
+  <div class="form-group col-sm-12">
+    <label>Descripción: </label><textarea class="form-control" formControlName="descripcion" type="text" [(ngModel)]="producto.descripcion" readonly></textarea>
+  </div>
+  <div class="form-group col-sm-3">
+    <label>Tienda: </label><input class="form-control" formControlName="tienda" type="text" [(ngModel)]="producto.tienda" readonly>
+  </div>
+  <div class="form-group col-sm-3">
+    <label>Precio por unidad: </label><input class="form-control" formControlName="precio" type="text" [(ngModel)]="producto.precio" readonly>
+  </div>
+  <div class="form-group col-sm-3">
+    <label>Cantidad a comprar: </label><input class="form-control" formControlName="cantidad" type="text" [(ngModel)]="producto.cantidad" readonly>
+  </div>
+  <div class="form-group col-sm-3">
+    <label><b>Total a pagar: </b></label><input class="form-control" formControlName="total" type="text" [(ngModel)]="+producto.cantidad * producto.precio" readonly>
+  </div>
+  <div class="form-group col-sm-6">
+    <label>Nombre del titular de la tarjeta: </label><input class="form-control" formControlName="cliente" type="text">
+  </div>
+  <div class="form-group col-sm-6">
+    <label>Número de tarjeta: </label><input class="form-control" formControlName="numero" type="text">
+  </div>
+  <div class="form-group col-sm-3">
+    <label>Fecha de vencimiento: </label><input class="form-control" formControlName="fecha" type="month">
+  </div>
+  <div class="form-group col-sm-3">
+    <label>Clave de seguridad: </label><input class="form-control" formControlName="cve" type="text" maxLength="3" minLength="3">
+  </div>
+
+</div>
+<div align="right">
+  <button class="btn btn-primary" type="submit" [disabled]="!formulario.valid">Comprar</button>
+</div>
+</form>
